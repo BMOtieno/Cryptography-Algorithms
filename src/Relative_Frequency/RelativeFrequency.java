@@ -42,6 +42,7 @@ public class RelativeFrequency {
 		//System.out.printf("\nCount of %c = %d", (char)(i + 97),count[i]);
 		System.out.printf("\nCount of %c = %f", (char)(i + 97),(double)count[i]/str.length());
 		}
+		
 		System.out.println("\n");
 	}
 }

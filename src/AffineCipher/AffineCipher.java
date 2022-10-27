@@ -3,7 +3,6 @@ package AffineCipher;
 import java.util.Scanner;
 
 public class AffineCipher {
-	
 	/****************************************************************************************/   
 	/* The AffineKey class implements the affine cipher. The key is specified by the pair 
 	(a, b) and the ciphertext is an affine mapping of the plaintext given by: 
@@ -11,12 +10,10 @@ public class AffineCipher {
 									Y = aX + b
 	Assumptions:
 
-			-	We ignore the spaces and punctuations in the plaintext.
-				
+			-	We ignore the spaces and punctuations in the plaintext.	
 			-	We do not differentiate between uppercase and lowercase letters in the
 				plaintext.
-			
-	 	
+				 	
 	/****************************************************************************************/
 	/*
 	 * @author Brian Otieno Odhiambo
@@ -36,27 +33,23 @@ public class AffineCipher {
 		str = str.toLowerCase();
 
 		char[] CipherText = new char[str.length()];
-		
-		
+			
 		for (int i = 0; i < str.length(); i++) { 
 			int temp_s = (int) str.charAt(i);
 			temp_s = temp_s - 97;
 			int y  = mod26(a * temp_s + b); 
 			CipherText[i] = (char)(y + 97);
-
 		}
 		
 		String Cipher = String.valueOf(CipherText);
-		
-		
+				
 		return Cipher;
 	}
 	
 	public String Decrypt(String str) { 			
 
 		char[] DText = new char[str.length()];
-		
-		
+				
 		for (int i = 0; i < str.length(); i++) { 
 			int temp_s = (int) str.charAt(i);
 			temp_s = temp_s - 97;
@@ -64,7 +57,6 @@ public class AffineCipher {
 			int y  = mod26(inverse(a)* mod26(temp_s - b));
 			//System.out.println(inverse(a)); 
 			DText[i] = (char)(y + 97);
-
 		}
 		
 		String Plain = String.valueOf(DText);
@@ -108,8 +100,7 @@ public class AffineCipher {
 		
 		//Converts the message to lower case
 		String str2 = str1.toLowerCase();
-
-		
+	
 		//Converts character array to String
 		String Cipher1 = k1.Encrypt(str2);
 		String Cipher2 = k2.Encrypt(str2);

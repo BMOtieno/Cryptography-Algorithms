@@ -82,8 +82,7 @@ public class VigenereCipher {
 				temp_k = (int) DecryptKey[i]    - 97;
 				temp_d = (int) Cipher.charAt(i) - 97;
 									
-				Decrypt[i] = (char)( (temp_d - temp_k + 26) % 26 + 97);
-				
+				Decrypt[i] = (char)( (temp_d - temp_k + 26) % 26 + 97);	
 			}
 			
 			String DecryptedText = String.valueOf(Decrypt);
