@@ -1,49 +1,47 @@
 package Relative_Frequency;
 
 import java.util.Scanner;
-
+/****************************************************************************************/   
+/* The freqCount class counts the relative frequencies of different letters in a word or
+sentence which is provided as input by a user. 
+*/
+/****************************************************************************************/
 public class RelativeFrequency {
 	/*
-	 * A program that computes the relative frequencies of letters in
-	 * a given piece of text.
-	 * 
-	 * @param String input from the user, letter in the input text(character)
-	 * @return the count of each letter in the string
 	 * @author Brian Otieno Odhiambo.
 	 * 
 	 * */
 	
-	public static int countLetter(String input, char ofInput) {
+	public static void main(String[] args) { 
 		
-		int count = 0;
+		int pos = 0;
+		Scanner in = new Scanner(System.in);
 		
-		for(int i = 0; i < input.length(); i++) {
-			if(input.charAt(i) == ofInput) {
-				count++;
-			}
-		}
-		return count;
-	}
+		//Prompts the user for an input
+		System.out.println("\nEnter a word/sentence:");				
+		String str = in.nextLine();
+		
+		//Converts the input to lower case
+		str = str.toLowerCase();
+		
+		//Below array will hold the count of each letter
+		int[] count = new int[26];
 	
-	//method to compute the relative frequency
-	public static void getRelativeFrequency() {
-		//wrap your scanner object in a try statement as an efficient way to close resources
-		try(Scanner scanner = new Scanner(System.in)){	
-			System.out.println("Enter your text to get the relative frequency for each letter");
-			String response = scanner.next();
+		for (int i = 0; i < str.length(); i++) { 
 			
-			//type cast the input string length to a double
-			double length = response.length();
-			
-			//count the occurrence of each letter in the text and divide it by it's length
-			for(int j = 0; j < length; j++) {
-				System.out.println("Letter: " + response.charAt(j) +" Relative Frequency: " + ((countLetter(response, response.charAt(j)))/length)*100 + "%");
+			char ch = str.charAt(i);
+			if(ch != ' ') { //Excludes the spaces from consideration 
+				pos = (int)ch - 97;
+				//System.out.println(pos);
+				count[pos]++;
 			}	
 		}
-	}
-	
-	public static void main(String[] args) {
-		//call to the getRelativeFrequency method
-		getRelativeFrequency();
+		int sum = 0;
+		for (int i = 0; i < count.length; i++) {
+		//if(count[i] != 0)//Shows letters with non-zero counts
+		//System.out.printf("\nCount of %c = %d", (char)(i + 97),count[i]);
+		System.out.printf("\nCount of %c = %f", (char)(i + 97),(double)count[i]/str.length());
+		}
+		System.out.println("\n");
 	}
 }
