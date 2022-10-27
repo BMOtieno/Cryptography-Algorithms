@@ -1,7 +1,5 @@
 package AffineCipher;
 
-import java.math.BigInteger;
-
 import java.util.Scanner;
 
 public class AffineCipher {
